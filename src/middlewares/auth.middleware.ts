@@ -1,10 +1,10 @@
 import jwt, { JwtPayload } from "jsonwebtoken";
-import { JWT_SECRET } from "../config/env.js";
 import { Request, Response, NextFunction } from "express";
 import {
   handleForbiddenResponse,
   handleUnauthorizedResponse,
-} from "../utils/handleResponse.js";
+} from "../utils/handleResponse";
+import { JWT_SECRET } from "../config/env";
 
 interface AuthenticatedRequest extends Request {
   user?: string | JwtPayload;

@@ -1,27 +1,30 @@
-import prisma from "../config/prisma.js";
-import { CreateStoryData, Story, UpdateStoryData } from "../types/story.js";
-import { User } from "../types/user.js";
+import prisma from "../config/prisma";
+import { CreateStoryData, Story, UpdateStoryData } from "../types/story";
 
-export const findStoryById = (storyId: string): Promise<User | null> => {
+// Fetch a user by their ID, including their role
+export const findUserById = async (userId: string) => {
   return prisma.user.findUnique({
-    where: { id: storyId },
+    where: { id: userId },
     include: { role: true },
   });
 };
 
-export const findStoryByUserId = (userId: string): Promise<Story | null> => {
-  return prisma.role.findUnique({
+// Fetch all stories authored by a specific user
+export const findStoriesByUserId = async (userId: string) => {
+  return prisma.story.findMany({
     where: { authorId: userId },
-    include: { user: true },
+    include: { author: true },
   });
 };
 
-export const createStory = async (data: CreateStoryData): Promise<Story> => {
+// Create a new story
+export const createStory = async (data: CreateStoryData) => {
   return prisma.story.create({
     data,
   });
 };
 
+// Update an existing story by its ID
 export const updateStory = async (
   storyId: string,
   data: UpdateStoryData
@@ -32,6 +35,7 @@ export const updateStory = async (
   });
 };
 
+// Delete a story by its ID
 export const deleteStory = async (storyId: string) => {
   return prisma.story.delete({
     where: { id: storyId },

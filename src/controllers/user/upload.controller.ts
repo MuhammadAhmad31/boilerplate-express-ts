@@ -1,15 +1,15 @@
-import prisma from "../../config/prisma.js";
-import { imageKit } from "../../config/lib/imageKit.js";
+import prisma from "../../config/prisma";
+import { imageKit } from "../../config/lib/imageKit";
 import {
   handleSuccessResponse,
   handleErrorResponse,
-} from "../../utils/handleResponse.js";
+} from "../../utils/handleResponse";
 import {
   createStorySchema,
   updateStorySchema,
-} from "../../schema/story.schema.js";
+} from "../../schema/story.schema";
 import { Request, Response } from "express";
-import { Story } from "../../types/story.js";
+import { Story } from "../../types/story";
 
 export const createStory = async (req: Request, res: Response) => {
   const { title, content, authorId } = req.body;

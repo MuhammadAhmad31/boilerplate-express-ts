@@ -3,7 +3,7 @@ import {
   IMAGEKIT_PRIVATE_KEY,
   IMAGEKIT_PUBLIC_KEY,
   IMAGEKIT_URL_ENDPOINT,
-} from "../env.js";
+} from "../env";
 
 export const imageKit = new ImageKit({
   publicKey: IMAGEKIT_PUBLIC_KEY || "",
