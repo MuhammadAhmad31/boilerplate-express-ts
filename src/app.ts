@@ -1,5 +1,5 @@
 import express from "express";
-import userRoutes from "./routes";
+import routes from "./routes";
 
 const app = express();
 
@@ -7,6 +7,9 @@ const app = express();
 app.use(express.json());
 
 // Routes
-app.use("/api/users", userRoutes);
+app.get("/", (req, res) => {
+  res.json("Welcome to Express!");
+});
+app.use("/api", routes);
 
 export default app;

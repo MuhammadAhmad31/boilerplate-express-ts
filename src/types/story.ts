@@ -7,9 +7,9 @@ export interface Story {
 }
 
 export interface CreateStoryData {
-  title: string;
-  content: string;
-  authorId: string;
+  title?: string;
+  content?: string;
+  authorId?: string;
 }
 
 export interface UpdateStoryData {
